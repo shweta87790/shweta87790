@@ -1,0 +1,23 @@
+name: Deploy Code
+
+on: [push]
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Sync Data
+        env:
+          source: './shweta87790/'
+          destination: 'amey_gothankar@34.93.42.250:/var/test/'          
+        run: |
+          echo "${{secrets.DEPLOY_KEY}}" > deploy_key
+          chmod 600 ./deploy_key
+          sudo rsync -chav --delete \
+            -e 'ssh -i ./deploy_key -o StrictHostKeyChecking=no' \
+            --exclude /sass \
+            ${{env.source}} ${{env.destination}}
