@@ -13,7 +13,7 @@ jobs:
       - name: Sync Data
         env:
           source: './'
-          destination: 'amey123@35.200.161.77:home/amey123/var/test/'          
+          destination: 'amey123@linux-amey:home/amey123/var/test/'          
         run: |
           echo "${{secrets.DEPLOY_KEY}}" > deploy_key
           chmod 600 ./deploy_key
