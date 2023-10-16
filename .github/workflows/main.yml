@@ -9,11 +9,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-
+      
       - name: Sync Data
         env:
-          source: './shweta87790/'
-          destination: 'amey_gothankar@34.93.42.250:/var/test/'          
+          source: './'
+          destination: 'amey123@35.200.161.77:/home/amey123/test/'          
         run: |
           echo "${{secrets.DEPLOY_KEY}}" > deploy_key
           chmod 600 ./deploy_key
