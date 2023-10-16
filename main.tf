@@ -16,7 +16,7 @@ resource "google_compute_instance" "test-build" {
     access_config      = {}
   }
   metadata {
-    ssh-keys = "jon:${{secrets.DEPLOY_KEY}}"
+    ssh-keys = "jon:${secrets.DEPLOY_KEY}"
   }
 
 provisioner "file" {
@@ -26,7 +26,7 @@ provisioner "file" {
   connection {
     type = "ssh"
     user = "amey123"
-    private_key = "${{secrets.PublicKey}}"
+    private_key = "${secrets.PublicKey}"
     agent = "false"
   }
 }
