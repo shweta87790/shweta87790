@@ -1,4 +1,3 @@
-
 import os
 from google.auth.transport.requests import Request
 from os import os
