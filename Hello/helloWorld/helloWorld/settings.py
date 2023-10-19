@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'polls',
-    'helloWorld'
+    'helloWorld',
 ]
 
 MIDDLEWARE = [
@@ -56,7 +56,7 @@ ROOT_URLCONF = 'helloWorld.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['./templates'],
+        'DIRS': ['./templates/'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
