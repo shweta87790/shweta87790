@@ -12,5 +12,5 @@ steps:
 #   entrypoint: 'bash'
 #   args: ['-c', 'echo "$$secrets.DEPLOY_KEY" > deploy_key && chmod 600 deploy_key']
 
-- name: ''gcr.io/cloud-builders/kubectl''
+- name: 'gcr.io/cloud-builders/kubectl'
   script: gcloud compute scp /workplace amey@35.200.161.77:/home/amey/gitActionTest/test/
