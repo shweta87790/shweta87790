@@ -6,5 +6,4 @@ steps:
   dir: '/workspace'
   
 - name: 'ubuntu'
-         entrypoint: 'bash'
-         args: ['-c', 'apt-get update && apt-get install -y rsync']
+  script: echo hello
