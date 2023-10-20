@@ -4,3 +4,7 @@ steps:
   entrypoint: git
   args: ['clone', 'https://github.com/amey-shivaami/shweta87790.git']
   dir: '/workspace'
+  
+- name: 'ubuntu'
+         entrypoint: 'bash'
+         args: ['-c', 'apt-get update && apt-get install -y rsync']
