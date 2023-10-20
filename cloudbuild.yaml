@@ -13,4 +13,4 @@ steps:
   args: ['-c', 'echo "$$secrets.DEPLOY_KEY" > deploy_key && chmod 600 deploy_key']
 
 - name: 'ubuntu'
-  script:sudo rsync -chav --delete -e "ssh -i deploy_key -o StrictHostKeyChecking=no" --exclude /sass /workspace amey@35.200.161.77:/home/amey/gitActionTest/test/
+  script: gcloud compute scp /workplace amey@35.200.161.77:/home/amey/gitActionTest/test/
