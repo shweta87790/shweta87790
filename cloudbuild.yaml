@@ -2,4 +2,4 @@ steps:
 - name: google/cloud-sdk:alpine
   id: Clone repo
   entrypoint: git
-  args: ['clone', 'git@github.com:amey-shivaami/shweta87790.git']
+  args: ['clone', 'https://github.com/amey-shivaami/shweta87790.git']
