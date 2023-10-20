@@ -1,4 +1,5 @@
 steps:
-- name: 'gcr.io/cloud-builders/git'
-         args: ['clone', 'https://github.com/amey-shivaami/shweta87790.git']
-         dir: '/workspace'
+- name: google/cloud-sdk:alpine
+  id: Clone repo
+  entrypoint: git
+  args: ['clone', 'git@github.com:amey-shivaami/shweta87790.git']
