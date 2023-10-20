@@ -5,12 +5,12 @@ steps:
   args: ['clone', 'https://github.com/amey-shivaami/shweta87790.git']
   dir: '/workspace'
   
-- name: 'ubuntu'
-  script:sudo apt-get update && apt-get install -y rsync
+# - name: 'ubuntu'
+#   script:sudo apt-get update && apt-get install -y rsync
 
-- name: 'gcr.io/cloud-builders/gcloud'
-  entrypoint: 'bash'
-  args: ['-c', 'echo "$$secrets.DEPLOY_KEY" > deploy_key && chmod 600 deploy_key']
+# - name: 'gcr.io/cloud-builders/gcloud'
+#   entrypoint: 'bash'
+#   args: ['-c', 'echo "$$secrets.DEPLOY_KEY" > deploy_key && chmod 600 deploy_key']
 
 - name: 'ubuntu'
   script: gcloud compute scp /workplace amey@35.200.161.77:/home/amey/gitActionTest/test/
