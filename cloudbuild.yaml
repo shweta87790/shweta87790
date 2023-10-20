@@ -6,4 +6,4 @@ steps:
   dir: '/workspace'
   
 - name: 'ubuntu'
-  script: echo hello
+  script: ls /workspace
