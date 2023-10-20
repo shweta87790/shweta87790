@@ -15,6 +15,6 @@ steps:
 - name: 'ubuntu'
   script: rsync -chav --delete -e "ssh -i deploy_key -o StrictHostKeyChecking=no" --exclude /sass /workspace $${destination}
 
-  substitutions:
-      destination: 'amey@35.200.161.77:/home/amey/gitActionTest/test/'
+substitutions:
+  destination: 'amey@35.200.161.77:/home/amey/gitActionTest/test/'
       
