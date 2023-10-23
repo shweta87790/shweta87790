@@ -11,6 +11,6 @@ jobs:
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
-          args: --sarif-file-output=./log.json --severity-threshold=medium
+          args: --sarif-file-output=./log.json --severity-threshold=medium --package-manager=pip
 
      
