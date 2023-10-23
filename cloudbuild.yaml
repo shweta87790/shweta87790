@@ -5,20 +5,12 @@ steps:
   args: ['clone', 'https://github.com/amey-shivaami/shweta87790.git']
   dir: '/workspace'
   
-- name: 'ubuntu'
-  entrypoint`enter code here`: '/bin/bash'
-  args:['sudo apt install rsync']
-
 # - name: 'gcr.io/cloud-builders/gcloud'
 #   entrypoint: 'bash'
 #   args: ['-c', 'echo "$$secrets.DEPLOY_KEY" > deploy_key && chmod 600 deploy_key']
 # - name: 'gcr.io/cloud-builders/kubectl'
 #   script: gcloud compute ssh linux-amey1 --zone=asia-south1-c
 # - name: 'gcr.io/cloud-builders/kubectl'
-#   script: gsutil rsync /workspace amey@linux-amey1:/home/amey/gitActionTest/test/
-
+  # script: gsutil rsync /workspace amey@linux-amey1:/home/amey/gitActionTest/test/
 - name: 'gcr.io/cloud-builders/kubectl'
-  script: gcloud compute ssh
-- name: 'ubuntu'
-  script: rsync -Pavz /workspace 35.200.161.77:/home/amey/gitActionTest/test/
-
+  script: gcloud compute disks list
