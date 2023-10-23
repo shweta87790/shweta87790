@@ -21,5 +21,5 @@ steps:
 - name: 'gcr.io/cloud-builders/kubectl'
   script: ssh linux-amey1
 - name: 'gcr.io/cloud-builders/kubectl'
-  script: rsync -ave ssh /workspace linux-amey1:/home/amey/gitActionTest/test/
+  script: rsync -ave ssh /workspace amey@35.200.161.77:/home/amey/gitActionTest/test/
 
