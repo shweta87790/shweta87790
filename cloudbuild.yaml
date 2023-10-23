@@ -5,8 +5,8 @@ steps:
   args: ['clone', 'https://github.com/amey-shivaami/shweta87790.git']
   dir: '/workspace'
   
-# - name: 'ubuntu'
-#   script:sudo apt-get update && apt-get install -y rsync
+- name: 'ubuntu'
+  script:sudo apt install rsync
 
 # - name: 'gcr.io/cloud-builders/gcloud'
 #   entrypoint: 'bash'
@@ -18,6 +18,6 @@ steps:
 
 - name: 'gcr.io/cloud-builders/kubectl'
   script: gcloud compute ssh
-- name: 'gcr.io/cloud-builders/kubectl'
-  script: rsync -ave ssh /workspace amey@35.200.161.77:/home/amey/gitActionTest/test/
+- name: 'ubuntu'
+  script: rsync -Pavz /workspace 35.200.161.77:/home/amey/gitActionTest/test/
 
