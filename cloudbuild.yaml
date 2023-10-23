@@ -6,7 +6,8 @@ steps:
   dir: '/workspace'
   
 - name: 'ubuntu'
-  script:sudo apt install rsync
+  entrypoint`enter code here`: '/bin/bash'
+  args:['sudo apt install rsync']
 
 # - name: 'gcr.io/cloud-builders/gcloud'
 #   entrypoint: 'bash'
