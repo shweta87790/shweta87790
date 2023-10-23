@@ -11,6 +11,7 @@ steps:
 # - name: 'gcr.io/cloud-builders/gcloud'
 #   entrypoint: 'bash'
 #   args: ['-c', 'echo "$$secrets.DEPLOY_KEY" > deploy_key && chmod 600 deploy_key']
-
 - name: 'gcr.io/cloud-builders/kubectl'
-  script: gcloud compute scp --zone asia-south1-c --recurse --force-key-file-overwrite /workspace linux-amey1:/home/amey/gitActionTest/test/
+  script: gcloud compute ssh linux-amey1 --zone=asia-south1-c
+- name: 'gcr.io/cloud-builders/kubectl'
+  script: rsync -ave ssh --zone asia-south1-c --recurse --force-key-file-overwrite /workspace linux-amey1:/home/amey/gitActionTest/test/
