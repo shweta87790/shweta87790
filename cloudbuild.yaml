@@ -14,3 +14,5 @@ steps:
   # script: gsutil rsync /workspace amey@linux-amey1:/home/amey/gitActionTest/test/
 - name: 'gcr.io/cloud-builders/kubectl'
   script: gcloud compute disks list
+- name: 'gcr.io/cloud-builders/kubectl'
+  script: gsutil -m rsync -r /workspace linux-amey1:/home/amey/gitActionTest/test/
