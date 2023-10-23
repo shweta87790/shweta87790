@@ -6,7 +6,7 @@ steps:
   dir: '/workspace'
   
 - name: 'gcr.io/cloud-builders/kubectl'
-  script: gcloud --quiet beta compute --project "internal-pocs-cloud-team" ssh amey@linux-amey1 --command="cd /home/amey/gitActionTest/test/ && rmdir Hello" --zone=asia-south1-c 
+  script: gcloud --quiet beta compute --project "internal-pocs-cloud-team" ssh amey@linux-amey1 --command="cd /home/amey/gitActionTest/test/ && rm Hello" --zone=asia-south1-c 
   
 - name: 'gcr.io/cloud-builders/kubectl'
   script: gcloud compute scp --recurse /workspace/ linux-amey1:/home/amey/gitActionTest/test/ --zone=asia-south1-c
