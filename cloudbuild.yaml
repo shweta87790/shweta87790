@@ -7,9 +7,14 @@ steps:
   
 # - name: 'gcr.io/cloud-builders/kubectl'
 #   script: gcloud compute scp --recurse /workspace/ linux-amey1:/home/amey/gitActionTest/test/ --zone=asia-south1-c
-  
+
 - name: 'gcr.io/cloud-builders/kubectl'
-  script: gcloud --quiet beta compute --project "internal-pocs-cloud-team" ssh amey@linux-amey1 --command="sudo apt install rsync && sudo rsync -chav --delete -e 'ssh -i StrictHostKeyChecking=no' --exclude /sass /workspace amey@35.200.161.77:/home/amey/gitActionTest/test" --zone=asia-south1-c 
+  script: gcloud beta compute scp --project "internal-pocs-cloud-team"  --recurse /workspace/ linux-amey1:/home/amey/gitActionTest/test/ --zone=asia-south1-c
+
+  # gcloud beta compute scp --project "project_name" --zone "zone_name" instance_name:~jupyter/file_name /home/Downloads
+  
+# - name: 'gcr.io/cloud-builders/kubectl'
+#   script: gcloud --quiet beta compute --project "internal-pocs-cloud-team" ssh amey@linux-amey1 --command="sudo apt install rsync && sudo rsync -chav --delete -e 'ssh -i StrictHostKeyChecking=no' --exclude /sass /workspace amey@35.200.161.77:/home/amey/gitActionTest/test" --zone=asia-south1-c 
 # - name: 'gcr.io/cloud-builders/kubectl'
   # script: gsutil rsync /workspace amey@linux-amey1:/home/amey/gitActionTest/test/
 
