@@ -1,0 +1,156 @@
+
+<!doctype html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Shivaami Customerportal">
+  <meta name="author" content="">
+  <title>Shivaami - Customer Portal</title>
+  <!-- Bootstrap core CSS-->
+  <link href="customstyle/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom fonts for this template-->
+  <link href="customstyle/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <!-- Custom styles for this template-->
+  <link href="css/sb-admin.css" rel="stylesheet">
+  <style>
+  
+  #json-overlay {
+    background-color: #EFF0F1;
+    opacity: 0.8;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 100;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background-image: url('demo_wait.gif');
+    background-position: center;
+    background-repeat: no-repeat;
+}
+  
+  </style>
+</head>
+
+<body class=" waitMe_body" style="background-image: url('images/back.jpg');">
+    <div class="container">
+    <div class="card card-login mx-auto mt-5"  style="background-color:#f3f3f3;border-radius:10px;">
+     <div align="center">  <img src="images/shivaami200.png" style="width:200px;margin-top:5px;"/>
+     <br>
+     <span style="font-width:bold; font-size:14px; text-decoration:underline;"></span>
+     <hr>
+     </div>    
+      <!--<div class="card-header">Login Shivaami at test</div>-->
+      <div class="card-body">
+		<div class="waitMe_container progress" style="background:#fff">
+			<div style="background:#000;"></div>
+		</div>
+	  
+           <form name='loginform' id='loginform' method='POST' onsubmit="loginForm('<?php echo $hosturl;?>'); return false;">
+		 <div id='error' style='text-align:center;'></div>
+		 <!--<div id="wait" style="display:none;width:69px;height:89px;position:absolute;top:30%;left:40%;padding:2px;"><img src='demo_wait.gif' width="64" height="64" /><br>Loading..</div>-->
+		  <div id="json-overlay" style="display:none;"></div>
+		  <div class="form-group">
+            <label for="exampleInputEmail1">Username</label>
+            <input class="form-control" name="username" id="username" type="email" aria-describedby="emailHelp" placeholder="Enter email">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input class="form-control" name="Password" id="Password" type="password" placeholder="Password">
+          </div>
+          <!--<div class="form-group">
+            <div class="form-check">
+              <label class="form-check-label">
+                <input class="form-check-input" type="checkbox"> Remember Password
+			  </label>
+            </div>
+          </div>-->
+		   <input class='btn btn-primary btn-block'  type='submit' name='submit' value='Login at will'/>
+		  
+        </form>
+        <div class="text-center">
+		<span style="font-size:12px; color:#000; margin:5px;">forgot your password?</span><a href="forgotpassword/forgotpass.php" style='font-size:14px; '>Click Here</a> </br>
+		
+          <a class="d-block  mt-4" href="register.php">Register an Account</a>
+		  <!--<a class="d-block small" href="forgot-password.html">Forgot Password?</a>-->
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Bootstrap core JavaScript-->
+  <script src="customstyle/jquery/jquery.min.js"></script>
+  <!--<script src="vendor/popper/popper.min.js"></script>
+  <script src="customstyle/bootstrap/js/bootstrap.min.js"></script>-->
+  <!-- Core plugin JavaScript-->
+  <script src="customstyle/jquery-easing/jquery.easing.min.js"></script>
+</body>
+
+<script type="text/javascript">
+var hosturl = $("#hosturl").val(); 
+function clearDiv(){
+	 setTimeout(function(){
+        $('#error').fadeIn('slow');
+    },1000);
+}
+
+
+
+	
+$(document).ready(function()
+{ 
+   $(document).bind("contextmenu",function(e){
+		  return false;
+   }); 
+})
+
+
+function loginForm(hosturl){
+	
+var username = $("#username").val();
+var password = $("#Password").val();
+if(!username.trim()){
+		$("#error").text('');
+		$('#error').css('color','red');
+		$("#error").text('Please enter username.');
+		clearDiv();
+	
+}else if(!password.trim()){
+			$("#error").text('');
+			$('#error').css('color','red');
+			$("#error").text('Please enter password.');
+			clearDiv();
+		}else{
+			var data = $("#loginform").serialize(); 
+			//alert(data); return false;
+			$.ajax({
+				  url:"login_ajax.php", 
+				  data:data,
+				  type:"POST",
+				  success: function(result){
+				        //alert(result);return false;
+						var obj = JSON.parse(result);
+						var hosturl1 = obj.redirecturl;
+						
+						if(obj.status==1){
+							$("#json-overlay").css("display", "block");								
+							//alert(obj.status);//return false;	
+							$("#error").text('');
+							$('#error').text(obj.errormsg); 
+							$('#error').css('color','green');
+							var url = hosturl1; 
+							$(location).attr('href',url);
+						}
+						if(obj.status==0){
+							$("#error").text('');
+							$('#error').text(obj.errormsg); 
+							$('#error').css('color','red');
+						}
+						clearDiv();
+					}
+				});
+		}
+}
+
+</script>
+</html>
