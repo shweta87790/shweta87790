@@ -1,4 +1,4 @@
-iuname: Example workflow for Python-3.8 using Snyk
+name: Example workflow for Python-3.8 using Snyk
 on: push
 jobs:
   security:
