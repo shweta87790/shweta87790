@@ -2,8 +2,7 @@ steps:
 - name: 'bash'
   args: ['echo', 'I am running in a private pool!']
 options:
-  pool:
-    # name: 'projects/internal-pocs-cloud-team/locations/asia-south1-c/workerPools/test-priv-pool'
+  pool: 'projects/internal-pocs-cloud-team/locations/asia-south1-c/workerPools/test-priv-pool'
 
 # - name: google/cloud-sdk:alpine
 #   id: Clone repo
