@@ -1,6 +1,6 @@
 steps:
 - name: 'bash'
-  args: ['echo', 'I am running in a private pool!']
+    args: ['echo', 'I am running in a private pool!']
 options:
   pool: 'test-priv-pool'
 
