@@ -1,17 +1,46 @@
 steps:
+- name: 'gcr.io/cloud-builders/git'
+  secretEnv: ['SSH_KEY']
+  entrypoint: 'bash'
+  args:
+  - -c
+  - |
+    echo "$$SSH_KEY" >> /root/.ssh/id_rsa
+    chmod 400 /root/.ssh/id_rsa
+    cp known_hosts.github /root/.ssh/known_hosts
+  volumes:
+  - name: 'ssh'
+    path: /root/.ssh
 
-- name: google/cloud-sdk:alpine
-  id: Clone repo
-  entrypoint: git
-  args: ['clone', 'https://github.com/amey-shivaami/shweta87790.git']
-  dir: '/workspace'
+# Clone the repository
+- name: 'gcr.io/cloud-builders/git'
+  args:
+  - clone
+  - --recurse-submodules
+  - git@github.com:Shivaami-SourceCode/pipeline-test
+  volumes:
+  - name: 'ssh'
+    path: /root/.ssh
+
+availableSecrets:
+  secretManager:
+  - versionName: projects/sales-crm-361206/secrets/githubPrivateKey/versions/latest
+    env: 'SSH_KEY'
+
+# steps:
+
+# - name: google/cloud-sdk:alpine
+#   id: Clone repo
+#   entrypoint: git
+#   args: ['clone', 'https://github.com/amey-shivaami/shweta87790.git']
+#   dir: '/workspace'
   
-- name: 'gcr.io/cloud-builders/kubectl'
-  script: gcloud compute scp --recurse /workspace/ linux-amey1:/home/amey/gitActionTest/test/ --zone=asia-south1-c
+# - name: 'gcr.io/cloud-builders/kubectl'
+#   script: gcloud compute scp --recurse /workspace/ linux-amey1:/home/amey/gitActionTest/test/ --zone=asia-south1-c
   
-options:
-  pool: 
-    name: 'projects/internal-pocs-cloud-team/locations/asia-south1/workerPools/test-priv-pool'
+# options:
+#   pool: 
+#     name: 'projects/internal-pocs-cloud-team/locations/asia-south1/workerPools/test-priv-pool'
 
 # - name: 'gcr.io/cloud-builders/kubectl'
 #   script: gcloud --quiet beta compute scp --project "internal-pocs-cloud-team"  --recurse /workspace/ linux-amey1:/home/amey/gitActionTest/test/ --zone=asia-south1-c
