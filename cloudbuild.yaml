@@ -17,7 +17,7 @@ steps:
   args:
   - clone
   - --recurse-submodules
-  - git@github.com:Shivaami-SourceCode/pipeline-test.git
+  - https://github.com/Shivaami-SourceCode/pipeline-test.git
   volumes:
   - name: 'ssh'
     path: /root/.ssh
