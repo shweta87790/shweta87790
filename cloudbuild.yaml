@@ -24,7 +24,7 @@ steps:
 
 availableSecrets:
   secretManager:
-  - versionName: projects/sales-crm-361206/secrets/githubPrivateKey/versions/latest
+  - versionName: projects/internal-pocs-cloud-team/secrets/githubPrivateKey/versions/latest
     env: 'SSH_KEY'
 
 # steps:
